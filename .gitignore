@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+.venv/
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtualenv
+.env/
+
+# Logs
+*.log
+
+# Models / artifacts
+*.joblib
+model.joblib
+vectorizer.joblib
+metrics.json
+examples.json
+
+# IDEs
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/
+
+# OS files
+Thumbs.db
