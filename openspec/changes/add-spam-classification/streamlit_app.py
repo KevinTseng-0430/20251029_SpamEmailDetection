@@ -14,6 +14,8 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 from sklearn.model_selection import train_test_split
+import subprocess
+import sys
 
 BASE = Path(__file__).parent.resolve()
 MODEL_PATH = BASE / "model.joblib"
@@ -53,6 +55,30 @@ st.set_page_config(page_title="Spam classifier — demo", layout="wide")
 st.markdown("# 📬 Spam Classifier — Baseline (Logistic Regression)")
 
 clf, vectorizer, metrics, examples = load_artifacts()
+
+# If artifacts are missing (e.g., on a fresh deploy), try to run the training script
+def ensure_artifacts():
+    if MODEL_PATH.exists() and VECT_PATH.exists():
+        return True
+    st.info("Model artifacts not found — training baseline model now. This may take a minute.")
+    try:
+        # run the train script in the same directory
+        res = subprocess.run([sys.executable, "train.py"], cwd=BASE, capture_output=True, text=True)
+        if res.returncode != 0:
+            st.error("Failed to train model on the server. See logs for details.")
+            st.code(res.stdout + "\n" + res.stderr)
+            return False
+        # reload artifacts
+        return True
+    except Exception as e:
+        st.error(f"Error while attempting to train: {e}")
+        return False
+
+
+if not (MODEL_PATH.exists() and VECT_PATH.exists()):
+    ok = ensure_artifacts()
+    if ok:
+        clf, vectorizer, metrics, examples = load_artifacts()
 
 if clf is None:
     st.warning("Model artifacts not found. Run `python train.py` to train the baseline model.")
