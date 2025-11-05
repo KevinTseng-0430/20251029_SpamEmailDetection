@@ -1,4 +1,4 @@
-# 20251029_SpamEmailDetection
+# AIoT Homework Project
 
 This repository contains exercises and change proposals for an AIoT homework project. It uses OpenSpec for spec-driven change management. The `openspec/` directory holds project conventions, specs, and change proposals.
 
@@ -7,16 +7,24 @@ Quick links
 - OpenSpec instructions: `openspec/AGENTS.md`
 - Project conventions: `openspec/project.md`
 - Change proposals: `openspec/changes/`
+- Spam classification change: `openspec/changes/add-spam-classification/`
+- Device anomaly detection change: `openspec/changes/add-device-anomaly-detection/`
 
-Spam classification change
---------------------------
+## Changes
+
+### Spam classification
 Change: `openspec/changes/add-spam-classification/`
 
 This change adds a spam-classification capability (baseline) including training and an interactive Streamlit demo. See `openspec/changes/add-spam-classification/README.md` for quick start and details.
 
+### Device anomaly detection
+Change: `openspec/changes/add-device-anomaly-detection/`
+
+This change adds a real-time anomaly detection system for device telemetry. See `openspec/changes/add-device-anomaly-detection/proposal.md` for more details.
+
 Project demo (Streamlit)
 -------------------------
-Interactive demo (hosted): https://20251029spamemaildetection.streamlit.app/
+Interactive demo : https://20251029spamemaildetection.streamlit.app/
 
 CRISP‑DM Project Summary
 ------------------------
@@ -85,6 +93,4 @@ Notes & next steps
 
 Acknowledgements
 ----------------
-Dataset: PacktPublishing example dataset used for instructional purposes. Verify license before production use.
-
-If you want, I can commit this README update and push to a new branch, or create a PR for review — tell me which you'd prefer.
+Dataset: https://raw.githubusercontent.com/PacktPublishing/Hands-On-Artificial-Intelligence-for-Cybersecurity/refs/heads/master/Chapter03/datasets/sms_spam_no_header.csv
